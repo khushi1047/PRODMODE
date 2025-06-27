@@ -1,0 +1,42 @@
+import { useState } from "react"
+import { MdDeleteForever } from "react-icons/md";
+export const Task=()=>{
+   const [inputValue, setInputValue] = useState(""); 
+  const [taskList, setTaskList] = useState([]);  
+    const handleAddbtn=(e)=>{
+        e.preventDefault();
+        setTaskList((prev)=>[
+            ...prev,inputValue
+        ]);
+        setInputValue("")
+    }
+     return(
+        <>
+        <div className="bg-blue-950 opacity-95 text-white rounded-2xl p-4 w-[400px]">
+            <p>Task To-do</p>
+            <form   onSubmit={handleAddbtn} className="flex flex-row justify-between">
+          
+                <input type="text" placeholder="enter task" value={inputValue} onChange={(e)=>setInputValue(e.target.value)} >
+                </input>
+                <button className="bg-black p-2 rounded-2xl hover:cursor-pointer hover:bg-amber-50 hover:text-black" >Add task</button>
+                </form>
+                 <ul className="text-white">
+               {
+                taskList.map((currele,index)=>{
+                    return(
+                        <li className="flex flex-row justify-between" key={index}>
+                            <p className="gap-6">{currele}</p>
+                            <button ><MdDeleteForever /></button>
+                            
+                            </li>
+                        
+                    )
+                })
+               }
+            </ul>
+            </div>
+           
+       
+        </>
+     )
+}
