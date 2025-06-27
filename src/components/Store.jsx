@@ -30,12 +30,12 @@ const TaskReducer = (state = initialState, action)=>{
 
 export const store = createStore(TaskReducer);
 
-function addtask(data) {
+export function addtask(data) {
   return { 
     type: Add, payload: data 
 };
 }
-function deletetask(id){
+export function deletetask(id){
     return{
         type:Delete , payload:id
     };
