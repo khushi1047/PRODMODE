@@ -37,7 +37,7 @@ export const Prodmo = () => {
   }, []);
 
   return (
-    <div className="bg-blue-950 opacity-95 text-white rounded-2xl p-4 w-[400px]">
+    <div className="opacity-95 text-white rounded-2xl p-4 ">
       <div className="flex items-center gap-2 text-xl font-semibold">
         <IoTimer size={24} />
         <p>Pomodoro Timer</p>
