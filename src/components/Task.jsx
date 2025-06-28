@@ -5,12 +5,18 @@
     export const Task=()=>{
     const [inputValue, setInputValue] = useState(""); 
     const [taskList, setTaskList] = useState([]);  
+      const [error, setError] = useState("");
         const handleAddbtn=(e)=>{
             e.preventDefault();
+             if (inputValue.trim() === "") {
+      setError("⚠️ Please fill the field.");
+      return;
+    }
             setTaskList((prev)=>[
                 ...prev,inputValue
             ]);
-            setInputValue("")
+            setInputValue("");
+              setError(""); 
         }
 
  
@@ -28,6 +34,8 @@
                     </input>
                     <button className="bg-black p-2 rounded-2xl hover:cursor-pointer hover:bg-amber-50 hover:text-black" >Add task</button>
                     </form>
+                     {error && <p className="text-red-500 mt-2">{error}</p>}
+
                     <ul className="text-white">
                 {
                     taskList.map((currele,index)=>{
