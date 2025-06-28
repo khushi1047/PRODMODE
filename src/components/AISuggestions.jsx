@@ -41,12 +41,12 @@ finally {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center text-white text-2xl p-4">
+    <div className="flex flex-col justify-center items-center  text-white text-2xl p-4">
       <p><CiCloud /></p>
       <p className="font-bold text-3xl mb-2">AI Suggestions</p>
-      <p className="text-lg text-center max-w-xl min-h-[100px]">{loading ? "⏳ Generating..." : tip}</p>
+      <p className="text-lg text-center max-w-xl ">{loading ? "⏳ Generating..." : tip}</p>
       <button
-        className="mt-4 bg-black rounded-2xl p-4 hover:cursor-pointer hover:bg-amber-50 hover:text-black"
+        className="mt-4 bg-black rounded-2xl p-4     hover:cursor-pointer hover:bg-amber-50 hover:text-black"
         onClick={handlebtn}
         disabled={loading}
       >
