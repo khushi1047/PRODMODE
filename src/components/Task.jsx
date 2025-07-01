@@ -1,9 +1,9 @@
-    import { useState } from "react"
+    import { useEffect, useState } from "react"
     import { MdDeleteForever } from "react-icons/md";
 
 
     export const Task=()=>{
-    const [inputValue, setInputValue] = useState(""); 
+    const [inputValue, setInputValue] = useState(); 
     const [taskList, setTaskList] = useState([]);  
       const [error, setError] = useState("");
         const handleAddbtn=(e)=>{
@@ -18,12 +18,16 @@
             setInputValue("");
               setError(""); 
         }
+// key : string value :string (here taskList is array so we need to convert it into string using JSON.stringify)
+        localStorage.setItem("tasktodo",JSON.stringify(taskList))
 
  
       const handledelete = (indexToDelete) => {
     const updatedTask = taskList.filter((_, index) => index !== indexToDelete);
     setTaskList(updatedTask);
   };
+
+ 
         return(
             <>
         
