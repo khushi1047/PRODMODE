@@ -3,8 +3,10 @@
 
 
     export const Task=()=>{
-    const [inputValue, setInputValue] = useState(); 
+    const [inputValue, setInputValue] = useState(""); 
     const [taskList, setTaskList] = useState([]);  
+    const [intialised, setintialised] = useState(true)
+
       const [error, setError] = useState("");
         const handleAddbtn=(e)=>{
             e.preventDefault();
@@ -19,13 +21,25 @@
               setError(""); 
         }
 // key : string value :string (here taskList is array so we need to convert it into string using JSON.stringify)
-        localStorage.setItem("tasktodo",JSON.stringify(taskList))
-
+   
  
       const handledelete = (indexToDelete) => {
     const updatedTask = taskList.filter((_, index) => index !== indexToDelete);
     setTaskList(updatedTask);
   };
+  useEffect(() => {
+    if (!intialised) {
+      localStorage.setItem("tasktodo", JSON.stringify(taskList));
+    }
+  }, [taskList]);
+    
+    useEffect(() => {
+        const getitems = localStorage.getItem("tasktodo");
+        if (getitems) {
+            setTaskList(JSON.parse(getitems));
+        }
+         setintialised(false);
+        }, []);
 
  
         return(
